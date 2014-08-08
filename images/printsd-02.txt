@@ -1,0 +1,4 @@
+~\f..
+ Elephant.x3g
+ magic-trick.x3g
+ Exit menu

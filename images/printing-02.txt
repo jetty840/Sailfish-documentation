@@ -1,0 +1,4 @@
+Heating:\B\B\B\B\B\B\B\B\B
+R Extruder: waiting
+L Extruder:  36C
+Platform:    50/100C

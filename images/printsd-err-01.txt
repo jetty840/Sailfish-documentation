@@ -1,0 +1,5 @@
+Unable to read this
+SD card format.
+Format as FAT-16 or
+FAT-32.
+

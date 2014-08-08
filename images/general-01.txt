@@ -1,0 +1,4 @@
+~Ditto Printing  OFF
+ Override GcTemp ON
+ Pause with Heat ON
+ Sound           ON

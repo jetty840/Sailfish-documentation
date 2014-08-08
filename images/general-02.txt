@@ -1,0 +1,4 @@
+~Acceleration    ON
+ Extruder Count  1
+ Extruder Hold   ON
+ HBP Installed   YES

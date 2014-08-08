@@ -1,0 +1,4 @@
+~Eeprom -> SD
+ SD -> Eeprom
+ Erase Eeprom
+

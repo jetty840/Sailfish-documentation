@@ -1,0 +1,4 @@
+Change Temperature
+230C
+
+Up/Dn/Left/M to Set

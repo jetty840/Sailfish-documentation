@@ -1,0 +1,4 @@
+     Jog mode
+        Y+
+ <-X  (Menu)  Z->
+        Y-

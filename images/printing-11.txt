@@ -1,0 +1,4 @@
+^Change Speed
+ Change Temperature
+ Set Cooling Fan ON
+ Print Statistics

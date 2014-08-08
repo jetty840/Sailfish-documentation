@@ -1,0 +1,4 @@
+~Check SD Reads   NO
+ P-Stop Control  OFF
+
+

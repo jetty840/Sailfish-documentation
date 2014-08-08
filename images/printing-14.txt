@@ -1,0 +1,4 @@
+Print Time:    0h 3m
+Time Left:     0h 5m
+Filament:    0.4730m
+ZPosition:   2.910mm

@@ -1,0 +1,4 @@
+This menu can make
+your bot inoperable.
+
+Press UP to proceed.

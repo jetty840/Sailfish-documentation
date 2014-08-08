@@ -1,0 +1,4 @@
+Lifetime:  1307h 23m 
+Last Print:   1h 43m
+Filament:     11763m
+Fil. Trip:     7.62m

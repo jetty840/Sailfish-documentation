@@ -1,0 +1,4 @@
+cube              4%
+R Extruder: 230/230C
+L Extruder:  38C
+Platform:   100/100C

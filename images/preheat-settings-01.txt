@@ -1,0 +1,4 @@
+ Preheat Settings
+~Right Extruder  230
+ Left Extruder   230
+ Platform        100

@@ -1,0 +1,4 @@
+Heating: \B\B\B\B\B
+Extruder    109/230C
+
+Press left to cancel

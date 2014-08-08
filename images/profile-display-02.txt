@@ -1,0 +1,4 @@
+Z Offset:    0.000mm
+Right Temp       230
+Left Temp        230
+Platform Temp    100

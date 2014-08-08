@@ -1,0 +1,4 @@
+Sailfish Replicator2
+--------------------
+Thing 32084 14/06/23  
+Sailfish v7.7 r1347

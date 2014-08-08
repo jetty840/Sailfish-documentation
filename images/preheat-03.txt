@@ -1,0 +1,4 @@
+~Turn Heaters OFF
+ Right Extruder  ON
+ Left Extruder   OFF
+ Platform        ON
