@@ -1,4 +1,0 @@
-^Filament Loading
- Change Speed
- Change Temperature
- Print Statistics
