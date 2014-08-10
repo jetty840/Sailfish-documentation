@@ -1,0 +1,74 @@
+\NextFile{update.html}
+
+\chapter{Updating Sailfish} \label{chap:update}
+\index{Updating}
+
+From time to time, new releases of Sailfish are made available.  Announcements
+of these releases along with release notes are published by the Sailfish team
+to the jetty-firmware interest group at
+groups.google.com.\index{Mailing list}\index{New releases}\footnote{Sailfish
+was originally named the ``Jetty Firmware'' and hence the name of the
+interest group, jetty-firmware.}  These updates usually include new features,
+performance enhancements, and bug fixes.  They have generally been field tested
+for several months beforehand by the Sailfish community; only after they have
+gone through several months of testing by many volunteers around the world
+are they ``officially'' released as non-field test releases.  The field test
+releases are kept separate from the official releases using a different
+download URL.
+
+At such a time that you wish to update Sailfish, check the release notes
+to see if there is any special steps you may need to do.  Release notes are
+archived online at
+
+\begin{quote}
+\myhref{http://jettyfirmware.yolasite.com/}{http://jettyfirmware.yolasite.com/}.\index{Release notes}
+\end{quote}
+
+In order to update Sailfish, you will need ReplicatorG 40 -- Sailfish.  Refer
+to Section~\ref{sec:soft-reqs} for information
+on obtaining this version of ReplicatorG.  Additionally, ReplicatorG must be
+configured with the Sailfish download location as per
+Section~\ref{sec:download-url}.
+
+\NextFile{update-step-1.html}
+
+\section{Step 1: Obtaining the latest firmware}
+
+When ReplicatorG runs and you are connected to the Internet (and not
+behind a firewall proxy), it will check for firmware updates and
+automatically download them.  It will log this activity in its logging
+region at the bottom of its main window.  You can also see if
+ReplicatorG has the firmware you want via the ``Upload new
+firmware...'' item of its ``Machine'' menu: select the printer type,
+click the ``Next'' button, and see which firmware versions are listed.
+
+\NextFile{update-step-2.html}
+
+\section{Step 2: Before applying an update}
+
+Typically, there is nothing you need to do before updating.  If you are
+cautious by nature, you may wish to save your current onboard parameters
+to an SD card file.  Do that via the ``EEPROM'' menu of the ``Utilities''
+menu.  See Section~\ref{sec:eeprom} for details.
+However, this step is not needed.
+
+\NextFile{update-step-3.html}
+
+\section{Step 3: Update}
+
+Once you know that you have the desired firmware downloaded, install it.  The directions for installation are those of
+Section~\ref{sec:really-install}.  Follow
+those directions.  Once the new version of Sailfish is installed, your
+printer will reboot itself.  You should see the new version number displayed
+in the ``splash'' screen (Section \ref{sec:Splash}) when the printer reboots.  You can also check the
+version information via the ``Version Information'' item of the
+``Utilities'' menu, Section \ref{sec:versinf}.
+
+\NextFile{update-step-4.html}
+
+\section{Step 4: Enjoy!}
+
+After you have finished updating Sailfish, there is generally nothing else
+you need to do: you are ready to resume printing.  Again, the release notes
+for the new version you have installed may contain special directions,
+but generally you do not need to do anything.

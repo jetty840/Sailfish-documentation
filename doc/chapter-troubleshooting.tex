@@ -1,0 +1,408 @@
+\NextFile{troubleshooting.html}
+
+\chapter{Troubleshooting}
+
+This chapter addresses common printing issues specific to Sailfish.
+
+\NextFile{troubleshooting-common-issues.html}
+
+\section{Common Issues}
+
+\subsection{The left extruder prints too far to the side}
+\index{Toolhead offsets!Incorrect values}
+
+This is a good indication that your toolhead offsets are very wrong.
+Write them down and then set them each to 0~mm and see if that
+corrects the problem.  You can quickly change the toolhead offsets
+from the front panel using the ``Toolhead Offsets'' item under the
+``Utilities'' menu.  See Section~\ref{sec:tooloff} for directions.
+
+For assistance on calibrating your toolhead offsets, refer to
+Section~\ref{sec:toolheadoffsets}.
+
+\begin{bclogo}[logo=\bcinfo, noborder=true, couleurBarre=yellow]{Note}
+If you recently installed Sailfish and are seeing this behavior, then likely
+you failed to do all the setup steps from Chapter~\ref{chap:install}.  Two
+of the important installation steps were to save the toolhead offsets before
+installing Sailfish and then to restore them.  If you did not do those
+steps, or did them incorrectly (e.g., used the wrong version of ReplicatorG),
+then perhaps you should review Chapter~\ref{chap:install}.
+\end{bclogo}
+
+\subsection{Incorrect target temperatures}
+\index{Temperature!Ignored}
+
+You probably have Sailfish's ``Override Gcode Temperature'' feature
+enabled. This feature ignores the temperatures requested in your gcode and
+instead uses the printer's preheat temperatures. You can either set the preheat
+temperatures to the temperatures you want
+(Section~\ref{sec:preheatset}), or disable the temperature override
+(Section~\ref{sec:override}).  For Cupcakes and Thing-o-Matics, use
+ReplicatorG, MakerWare, or MakerBot Desktop to change these settings
+via the Onboard Preferences windows.
+
+\begin{bclogo}[logo=\bcinfo, noborder=true, couleurBarre=yellow]{Note}
+If you recently installed Sailfish and are seeing this behavior, then likely
+you failed to do all the setup steps from Chapter~\ref{chap:install}.  One
+of the important installation steps is to set the printer to ``factory
+defaults''.  And one of those factory defaults is to disable the ``Override
+Gcode Temperature'' feature.  If it is enabled and you do not recall
+enabling it, then likely you forgot that installation step.
+\end{bclogo}
+
+\subsection{Extruder cannot reach temperature}
+
+Do you have an extruder on a dual extruder printer which cannot seem to reach
+temperature during a \gls{dualstrusion} print?  You may be able to resolve
+this with a change to the PID parameters for the extruder in question.
+
+This problem is particularly common on Replicator 2X printers manufactured
+during or after October 2013.  For these printers, it appears that MakerBot made
+an engineering change to their Replicator 2X line and then released them without
+adequate testing.  The change appears to have been made to expedite assembly
+but results in too much air wash over one of the extruder's heater blocks; usually the right extruder.  With the increased air wash cooling the
+extruder and the default PID settings, the extruder cannot reach temperature.
+
+Alternatively, it may simply be that the heater core for the extruder in
+question is too weak: it has too high of a resistance causing it to be of
+lower wattage than normal.
+
+In either case, you can attempt to change the PID settings for the
+extruder.  Do this with ReplicatorG -- Sailfish.  Connect to the printer
+over USB and then invoke the ``Onboard Preferences'' window from the
+``Machine'' menu.  In the onboard preferences window, click on the
+tab for the extruder in question: extruder 0 is the right extruder
+and extruder 1 is the left extruder.  For the PID parameters, change the ``I''
+value to 0.45 and the click the ``Commit'' button.  Once the change has
+been made, power cycle the printer.  Then test the behavior.  If that does not
+work, the problem may lie elsewhere.  Be very careful about experimenting
+with the PID values as you do not want to destabilize the heating controls.
+Also, be warned that MakerBot did not actually implement ``true'' PID
+control.  Their implementation, which Sailfish follows for compatability,
+is not true PID control.
+
+\subsection{Fast, violent motion}
+
+Should your printer seem to move too fast or violently, then likely one of
+two things is occurring:
+
+\begin{enumerate}
+\item You are printing an old-style print file which has only unaccelerated
+motion commands.  Such print files often use the file extension \texttt{.s3g}.
+Regenerate the print file and ensure that it is a \texttt{.x3g} file.
+\item The printer's acceleration is disabled.
+See Section~\ref{sec:acceleration-enable} for help on checking this setting
+on Replicator-style printers.  On Cupcakes and Thing-o-Matics, you will need
+to use ReplicatorG, MakerWare, or MakerBot Desktop to check this setting via
+machine ``Onboard Preferences''.
+\end{enumerate}
+
+Fast, violent motion is typically associated with printing at high
+speeds without acceleration.  If acceleration is already enabled, make
+sure you are using the correct type of build file, \texttt{.x3g}. As
+of Sailfish 4.0 for the Thing-o-Matic and Cupcake and Sailfish 6.2 for
+Replicators, Sailfish uses a new kind of accelerated move
+command.  In ReplicatorG 0039 -- Sailfish, those new commands are used
+when generating \texttt{.s3g} files, while in ReplicatorG 0040 -- Sailfish,
+\texttt{.s3g} files use the old commands and \texttt{.x3g} files use the new
+ones. If you use an \texttt{.s3g} file generated with any version of
+ReplicatorG other than 0039 - Sailfish, it will contain the old
+unaccelerated move commands and Sailfish will run them as
+non-accelerated moves, resulting in violent, jerky movement that is
+hard on your printer and produces poor quality prints.
+
+If neither of these things turns out to be the issue, go to
+ReplicatorG's ``Machine'' menu, select ``Onboard Preferences'', and compare
+the values in the Acceleration tab to the ones shown in Table~\ref{tab:def-params}
+If they look very different, you may want to reset your printer to factory
+defaults.  See, for example, Section~\ref{sec:restore-settings} for directions
+on accomplishing this from the front panel.  Note that this will preserve your home
+and toolhead offsets.
+
+\subsection{Prints start off the platform}
+
+Check your printer's X and Y home offsets.  You can do this via the
+printer's LCD display, if equipped, or from ReplicatorG, MakerWare, or
+MakerBot Desktop.  See Section~\ref{sec:checkoffsets} for
+instructions.  In that section, you will also find
+Table~\ref{tab:default-offsets} which lists the default X and Y home
+offsets for most types of printers.
+
+You are looking to make sure that the X and Y offsets are not small
+values or even zero or negative.  They should be close to those shown
+in Table~\ref{tab:default-offsets}.  Should you change the values and
+again check them, you may not see exactly the values you set.  This is a result of converting back and forth between units of
+millimeters and stepper motor steps, which must be integer values; the conversion
+thus introduces ``roundoff'' errors.
+
+For Thing-o-Matics and Cupcakes, you should run the home offset calibration
+procedure if you are unsure of what the correct home offset values are.
+If you know what they should be, then you can set them via the ``Onboard
+Preferences'' windows in ReplicatorG, MakerWare, or Desktop.
+
+\subsection{Printer is skipping or missing steps}
+\index{Print defects!Missing steps|(}
+There are many possible causes for this behavior, most of them mechanical, including:
+
+\begin{enumerate}
+\item Loose pulley which slips from time to time.  Tighten set screws on all
+  pulleys.
+\item Faulty stepper motor wiring, or wiring not well seated in their
+  connectors. Inspect wiring; reseat connectors.  Problems may only exhibit 
+  at certain travel extremes.
+\item Faulty endstop wiring, or wiring not well seated in their connectors.
+  Inspect wiring; reseat connectors.  Problems may only exhibit at certain
+  travel extremes.
+\item Electrical noise picked up by endstop wiring and causing false endstop triggers.
+  Route wiring away from stepper motor wiring if possible.
+\item Build is too large for platform and an endstop is being triggered
+  causing lost steps.
+\end{enumerate}
+
+Note that on genuine MakerBot Replicator 2 and 2X's, faulty stepper motor
+and endstop wiring is not uncommon, even on brand new printers.
+
+If you are sure that the problem is not mechanical, then it may be
+that you are running an axis faster than it can tolerate.  The Z axis,
+especially on a Cupcake, is particularly sensitive to this.  The
+maximum feedrates allowed for each axis are specified in the machine
+definition file used by ReplicatorG.  Those maximum feedrates are
+specified in units of millimeters per minute.  You may need to reduce
+your maximum federate.  After changing a machine definition, you will need to exit and
+restart ReplicatorG so that ReplicatorG registers the change.  Then you
+will need to connect your printer to ReplicatorG via USB so that
+ReplicatorG can communicate the change to your printer.
+
+However, the primary enforcement of maximum feedrates is your slicer.  Or,
+more specifically, the program which translates your gcode to \gls{X3G} for
+consumption by the printer's firmware.  As such, you need to also set
+the maximum feedrates in your slicer.  How this is done is slicer dependent
+and outside the scope of this document.
+\index{Print defects!Missing steps|)}
+
+\subsection{Leveling script does not move the extruder}
+
+The leveling script in Sailfish (Section~\ref{sec:levelbp}) is more
+versatile than that found in other firmwares: it allows you to manually
+move the extruder carriage to any position you wish to check.  Moreover,
+you can move it to as many positions as you want, in whatever order you
+want, as many times as you want.  Just hold the extruder carriage and move
+it to whereever you want to check the spacing between the extruder nozzle
+and build platform.  Use the adjustment knobs under the build platform
+to adjust the spacing between the build platform and nozzle.  When you are
+finished, press the center button to return to the Utilities menu.
+
+\subsection{Printer homes in the wrong direction}
+\index{Homing!Wrong direction}
+
+If you are using ReplicatorG for slicing, ensure that the ``Use default
+start/end gcode'' box in the ``Generate GCode'' window is checked. If you
+are using your own starting gcode, check it for errors.
+
+If that does not solve the problem or you are not using ReplicatorG, then
+inspect your starting gcode and ensure that the homing commands are
+correct for your printer type as per Table~\ref{tab:homing}.  Note that
+the G161 gcode command homes to the minimum endstops while a G162 command homes
+to the maximum endstops.
+
+\begin{table}[ht]
+\ifpdf
+\centering
+\fi
+\begin{tabular}{r | c c c }
+\hline
+& \multicolumn{3}{c}{Homing Direction}\\
+Printer & X & Y & Z \\
+\hline
+All Replicators \& clones & max & max & min \\
+Thing-o-Matics \& Cupcakes & min & min & max \\
+\hline
+\end{tabular}
+\caption[Printer-specific homing directions]{Printer-specific homing directions}
+\label{tab:homing}
+\end{table}
+
+Finally, if the homing commands appear correct in your starting gcode, then
+check if the direction of motion for the axis or axes has been reversed.  If so, you can invert the direction of travel for each axis via the printer's
+onboard preferences.  Inspect and change them with ReplicatorG, MakerWare,
+or MakerBot Desktop.
+
+\NextFile{troubleshooting-sd-card.html}
+
+\section{SD Card Difficulties}
+
+\subsection{Printer cannot read the SD card}
+
+First, make sure that the SD card is inserted properly.  Also, check with
+a good light and magnification for any debris in the SD card slot.  Vertical
+SD card slots are prone to collecting fine wisps of filament and other
+unwanted material which may interfere with proper operation.
+
+If you continue to have difficulty, then try a different SD card.  It may
+be that your current SD simply does not work with your printer.  Many
+printers, including genuine MakerBot printers, have borderline SD card
+electronics which do not perform well.  An SD card which works fine with
+your computer may not work well with your printer, hence the recommendation
+to try a different card.
+
+Also, make sure that the SD card is formatted as either \gls{FAT-16} or
+FAT-32. The proprietary ``eFAT'' format is not supported as it requires licensing from Microsoft.
+
+\subsection{Missing SD card files}
+\index{SD card!Missing files}
+
+Check that the files in question end with either the \texttt{.s3g} or
+\texttt{.x3g} extensions.  Sailfish recognizes files in lower, upper,
+and mixed case.  Files which do not end in either of those extensions
+will not be displayed, unless they are the names of folders.  Also, if the files you are looking for are in a folder,
+then you will need to navigate to that folder in order to access them.
+See Section~\ref{sec:sdmenu} for further details on working with SD card
+folders.
+
+Note also that filenames longer than 31 characters, filenames with
+spaces, and filenames with non-US-ASCII characters may be problematic.  There
+are special ``extensions'' to the FAT-16 and FAT-32 file systems for those
+categories of file names. Your printer's tiny microprocessor does not have
+space for the additional code to handle these extensions.
+
+\subsection{Prints from SD cards stop without finishing}
+\index{SD card!Prints fail}
+
+If your prints from an SD card failed with the printer simply
+stopping midprint without displaying an error message or clearing
+the platform, then there are several likely causes, described below:
+
+\begin{enumerate}
+\item The file on the SD card is truncated.  The printer thinks the print
+  is over but did not read from the print file a ``build end notification''
+  command and so did not clear the build platform.  The file may have
+  been truncated if the program writing it did not check for errors, as
+  ReplicatorG is known to do.  When writing print files with ReplicatorG,
+  it is best to write them to your local hard drive and then drag-and-drop
+  the file to the SD card using your computer's file handling tools.  This
+  way, if there is a problem, your computer will catch the error and
+  alert you.  ReplicatorG ignores errors.
+
+  Another cause of truncated files is a known bug in many firmwares.
+  The SD card library used by many firmwares has a bug which can truncate
+  SD card files.  The file will print fine at least once and then be
+  truncated and print incorrectly afterwords.  This bug has been fixed in
+  Sailfish 7.6 and the author of the SD card library notified.  The bug has
+  not been fixed in ``stock'' firmwares.
+\item The underlying gcode is truncated and incomplete.  Check the original
+  gcode and ensure that it ends properly.
+\item SD card read errors are occurring.  By default, SD card operations
+  are not checked for errors.  You may wish to enable SD card error checking (Section~\ref{sec:sd-crc})
+  and see if that resolves your difficulty.  However, in the case of a malfunctioning 
+  SD card, doing so may not be sufficient.
+\item An electrical anomaly caused your printer's microprocessor to reset.
+  This situation is hard to detect; addressing it is outside the scope of
+  this document.
+\item The firmware on your printer is corrupt.  Re-install the firmware.
+  Follow the directions for updating your firmware, Chapter~\ref{chap:update}.
+\end{enumerate}
+
+\NextFile{troubleshooting-dualstrusion.html}
+
+\section{Dualstrusion}
+\index{Print defects!Dualstrusion}
+
+\Gls{dualstrusion} printing has its own set of unique issues.  A
+number of the issues you might see relate to your slicer: some slicers
+are much better than others at handling dualstrusion.  As of this
+writing, the ``gold standard'' for dualstrusion slicing is MakerBot's
+slicer found in their MakerWare and Desktop applications.  Both are
+presently free and may be obtained at makerbot.com.
+
+\subsection{Dualstrusion prints poorly aligned}
+
+If your dualstrusion prints exhibit poor alignment between the two colors
+or plastics being printed, you likely need to calibrate the nozzle spacing
+(i.e., the ``toolhead offsets'').  See Section~\ref{sec:toolheadoffsets}
+for detailed directions on this calibration process.
+
+Note that the calibration process described in Section~\ref{sec:toolheadoffsets}
+is only accurate to about 0.1~mm.  You are effectively picking the adjustments
+with a 0.1~mm granularity.  You can, if you want, do better by printing your
+own calibration prints and measuring the errors with calipers and then entering
+the measured toolhead offsets manually using the ``Toolhead Offsets'' menu
+as described in Section~\ref{sec:tooloff}.
+
+\subsection{Dualstrusion prints have too much color bleed}
+
+In general, the plastic from each extruder has a tendency to get dragged
+all over the print, causing color bleed.  This is difficult to avoid.
+Using ``purge walls'' helps mitigate the problem somewhat.  Try to use
+a slicer which will automatically generate purge walls.  If your slicer
+cannot, then consider adding them to your print before slicing.
+
+If you feel that the firmware is contributing to the plastic oozing too
+much from the idle extruder, then check to see if ``Extruder Hold'' is
+enabled.  You can check it via the front panel as per
+Section~\ref{sec:extruder-hold}.
+
+\NextFile{troubleshooting-thingomatics-and-cupcakes.html}
+
+\section{Thing-o-Matics and Cupcakes}
+
+The following issues tend to arise on Thing-o-Matic and Cupcake printers.
+
+\subsection{ReplicatorG shows a tool count of -1}
+
+This is normal --- just set the extruder count to the correct count of either 1
+or 2 via ReplicatorG's ``Onboard Preferences'' item found under the ``Machine''
+menu.  You will first need to connect your printer to ReplicatorG over USB.
+
+\subsection{The print starts with the extruder too far above the platform}
+
+This typically results from running the Z axis too fast resulting in
+lost steps.  As a result, the printer thinks the extruder is very close
+to the build platform when in reality it is very far away.
+
+There are two typical causes for this.  On Thing-o-Matics, it is often that
+the Z-axis is binding.  Clean the Z rods, lubricate the Z axis leadscrew, and make
+sure the self-aligning bearings are not binding.  They often do.  There
+are numerous Thing-o-Matic modifications at thingiverse.com aimed at
+addressing this common problem.  Worse comes to worst, you can reduce
+the maximum feedrate for the Z axis via your slicer.
+
+On Cupcakes, this usually occurs when printing from an SD card.  Owing to
+an esoteric reason, the first motion command for a print file from an SD
+card is run without acceleration.  To confirm if this is the issue, try
+the same print over USB.  If printing over USB resolves the issue, then
+you can either reduce the maximum Z feedrate or change your start gcode
+to not ``recall home positions'' and to instead assert them with a G92
+command.  For further information on why the first motion command is
+not accelerated when printing from a file, see Section~\ref{sec:first-move}.
+
+\subsection{3~mm extruder seems to be depriming too much}
+
+Use ReplicatorG's ``Onboard Preferences'' window to enable ``Extruder
+Hold''.  It is in the ``Misc'' tab. For extruders with high internal
+pressure --- 3~mm extruders, typically --- it is helpful to ignore gcode
+commands to temporarily disable the extruder stepper motor during a
+build.  While this may not have been a problem for you previously,
+Skeinforge~50 generates these commands before any \gls{travel move}.\index{Travel move}
+
+\subsection{No plastic comes out of the extruder}
+
+Your extruder stepper motor may be turning the wrong direction.  This
+is especially true if you just switched from RPM-based gcode to Volumetric
+5D gcode.  Try inverting the ``A axis'' from ReplicatorG's ``Onboard
+Preferences'' window found under the ``Machine'' menu item.  You will
+first need to connect your printer to ReplicatorG over USB.
+
+\subsection{The HBP temperature climbs during a print}
+
+There is a known bug in the Gen~4 electronics' Extruder Controller firmware.
+That bug can be triggered by using an incorrectly configured
+``Altshell'' plugin with Skeinforge.  If you are using Gen~4 electronics --- a
+Thing-o-Matic --- and the Altshell plugin, then make sure that the
+``Use M320/M321'' box is checked in the Altshell plugin's configuration.
+
+Note that the firmware on the Extruder Controller is not Sailfish.  The
+Extruder Controller has its own firmware.  The last release of that firmware
+was version 3.1 back in 2011.
+
+If you are not using Gen~4 electronics or not using the Altshell plugin,
+then check the gcode in your print file.

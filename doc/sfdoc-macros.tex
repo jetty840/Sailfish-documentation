@@ -1,0 +1,85 @@
+\makeatletter
+
+\newcommand{\strong}[1]{\@strong{#1}}
+\newcommand{\@@strong}[1]{\textbf{\let\@strong\@@@strong#1}}
+\newcommand{\@@@strong}[1]{\textnormal{\let\@strong\@@strong#1}}
+\let\@strong\@@strong
+
+% Add a hair space if the fraction is followed by a non-space token.
+\newcommand{\textfrac@kern}{%
+  \ifx\textfrac@nexttoken\@sptoken%
+    %
+  \else%
+    \kern.08333em%
+  \fi%
+}
+
+% The non-star version of \textfrac uses a diagonal solidus.
+\newcommand{\textfrac@nostar}[3][]{%
+  \mbox{%
+    \ifthenelse{\not\equal{#1}{}}%  Test for integer portion [optional #1]
+      {#1\/\kern.05em}%                 Present? Emit integer and hair space
+      {}%                             Not present? Emit nothing
+    \raisebox{.775ex}{\tiny #2}%    Emit numerator [#2]
+    \raisebox{.365ex}{\kern-.15em{\scriptsize /}\kern-.15em}%  Emit solidus
+    \raisebox{0ex}{\tiny #3}%       Emit denominator [#3]
+  }%
+  \futurelet\textfrac@nexttoken\textfrac@kern%
+}
+
+% The star version of \textfrac uses a horizontal rule.
+\newlength\textfrac@width@num%
+\newlength\textfrac@width@denom%
+\newlength\textfrac@width@%
+\newcommand{\textfrac@star}[3][]{%
+  \settowidth{\textfrac@width@num}{\tiny #2\/}%
+  \settowidth{\textfrac@width@denom}{\tiny #3\/}%
+  \ifthenelse{\lengthtest{\textfrac@width@num<\textfrac@width@denom}}%
+    {\let\textfrac@width@\textfrac@width@denom}%
+    {\let\textfrac@width@\textfrac@width@num}%
+  \mbox{%
+    \ifthenelse{\not\equal{#1}{}}%  Test for integer portion [optional #1]
+      {#1\/\kern.08333em}%              Present? Emit integer and hair space
+      {}%                             Not present? Emit nothing
+    \ooalign{%
+      \relax\cr%
+      \noalign{\vskip-1.1ex}%
+      {\hss\tiny #2\/\hss}\cr%        Emit numerator [#2]
+      \noalign{\vskip1.1ex}%
+      \rule[.6666ex]{\textfrac@width@}{.4pt}\cr%   Emit horizontal rule
+      \noalign{\vskip.4ex}%
+      {\hss\tiny #3\/\hss}\cr%        Emit denominator [#3]
+      \noalign{\vskip-.4ex}%
+    }%
+  }%
+  \let\textfrac@width\undefined%
+  \futurelet\textfrac@nexttoken\textfrac@kern%
+}
+
+% Select between \textfrac and \textfrac*.
+\def\textfrac{\@ifstar\textfrac@star\textfrac@nostar}
+
+\makeatother
+
+\ifpdf
+\newcommand*{\titleTH}{\begingroup% T&H Typography
+\clearpage
+\thispagestyle{empty}
+\raggedleft
+\vspace*{\baselineskip}
+{\Large\ \ }\\[0.167\textheight]
+{\textcolor{Red}{\bfseries{\Huge S}{\LARGE AILFISH}}}\\[\baselineskip]
+{\bfseries{\Large Reference Manual}}\\[\baselineskip]
+{\small v7.7}\par
+\vfill
+{\Large Laurel Newman}\\[\baselineskip]
+{\large \today}\par
+\vspace*{3\baselineskip}
+\endgroup}
+\else
+\newcommand*{\titleTH}{\maketitle}
+\fi
+
+\ifpdf
+\newcommand\NextFile[1]{}
+\fi

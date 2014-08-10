@@ -1,0 +1,388 @@
+\newglossaryentry{EEPROM}
+{
+        name={EEPROM},
+        description={Your printer contains a section of permanent memory
+called ``EEPROM''.  The term ``EEPROM'' is an acronym for
+Electrically Erasable Programmable Read-Only Memory.  This permanent
+memory is used by the printer to store configuration and usage
+information.  The printer's ``onboard parameters'', sometimes called
+``onboard preferences'', are stored in its EEPROM.},
+        sort=EEPROM
+}
+
+\newglossaryentry{FAT-16}
+{
+        name={FAT-16, FAT-32},
+        text={FAT-16 or FAT-32},
+        description={The SD cards used with your printer utilize a ``file system''
+to organize the files on the card.  Sailfish supports two types of
+file systems: FAT-16 and FAT-32.  All modern operating systems can set up
+your SD card using either of those two file systems.  However, you may
+not be given a choice of which to use: often FAT-16 is automatically
+seleced for SD cards with 2~GB or less space and FAT-32 is used for
+larger cards.},
+        sort=FAT-16
+}
+
+%\newglossaryentry{FAT-32}
+%{
+%        name={FAT-32},
+%        description={See \gls{FAT-16}.},
+%        sort=FAT-32
+%}
+
+\newglossaryentry{Gen 3}
+{
+        name={Gen 3},
+        description={The third generation of RepRap 3D printer electronics
+was referred to as ``Gen 3'' electronics.  The MakerBot Cupcake uses this
+generation of RepRap electronics.},
+         sort=Gen 3
+}
+
+\newglossaryentry{Gen 4}
+{
+        name={Gen 4},
+        description={The fourth generation of RepRap 3D printer electronics
+was referred to as ``Gen 4'' electronics.  The MakerBot Thing-o-Matic uses this
+generation of RepRap electronics.},
+         sort=Gen 4
+}
+
+\newglossaryentry{HBP}
+{
+        name={HBP},
+        description={Heated Build Platform.  Some printers include a
+build platform which incorporates a heater to enable heating of the build
+surface to a designated temperature.  Heating the build surface promotes
+better adhesion and may, for some plastics, reduce warping.},
+        sort=HBP
+}
+
+\newglossaryentry{home offset}
+{
+        name={Home offset},
+        text={home offset},
+        description={Each printer has three home offsets: the X, Y, and Z
+home offsets.  Each value defines the printer's position along the associated
+axis after homing to an endstop on that axis.  See
+Section~\ref{sec:home-offsets} for further information.},
+        plural={home offsets},
+        sort=home offset
+}
+
+\newglossaryentry{Jetty Firmware}
+{
+        name={Jetty Firmware},
+        description={The Sailfish firmware was originally named
+``Jetty Firmware''. Originally based upon v3.1 of the G3Firmware from
+MakerBot, the Jetty Firmware was first released in 2011 as v3.2.  (Note that
+the G3Firmware from MakerBot applied to both Gen 3 and Gen 4 electronics.)
+In early 2012, portions of Marlin were ported to MakerBots and incorporated
+into the Jetty Firmware.  In October 2012, the Jetty Firmware was
+renamed to Sailfish and released as Sailfish v4.0 for Thing-o-Matics and
+Cupcakes and as v6.2 for Replicators.},
+        sort=Jetty Firmware
+}
+
+\newglossaryentry{LCD}
+{
+        name={LCD},
+        description={LCD is an acronym for ``Liquid Crystal Display''.  Many
+3D printers include a LCD screen on their front and use it to display
+information and as part of their interaction with users via an associated
+keypad.},
+        sort=LCD
+}
+
+\newglossaryentry{MightyBoard}
+{
+        name={MightyBoard},
+        description={The MightyBoard is the name MakerBot gave to the
+electronics in their Replicator 1 and 2 series of printers.  The Replicator 1
+contains a MightyBoard revision E board (``rev E'').  The Replicator 2 contains
+either a MightyBoard rev G or H board depending upon with which the printer was
+manufactured.  The Replicator 2X contains a MightyBoard rev H.},
+         sort=MightyBoard
+}
+
+\newglossaryentry{RPM gcode}
+{
+        name={RPM gcode},
+        description={Early ``do-it-yourself'' 3D printers used DC
+motors for extrusion.  The desired rate of extrusion was achieved by
+setting the ``rotations per minute'' (RPM) of the motor.  The gcode
+for this style of 3D printing is referred to as ``RPM gcode''.  Cupcakes
+and early Thing-o-Matics used DC motors for extrusion.},
+        sort=RPM gcode
+}
+
+\newglossaryentry{S3G}
+{
+        name={S3G},
+        description={S3G is an acronymn for ``Sanguino3 Gcode'' and is a
+3D printer control language.  Files containing S3G use the file extension
+\texttt{.s3g}.  See Section~\ref{sec:s3g-x3g} for further information.},
+        plural={\texttt{.s3g}},
+        sort=S3G
+}
+
+\newglossaryentry{SD card}
+{
+        name={SD card},
+        description={An SD card is specific type of memory flash card and is
+used to convey print files to your printer without using a USB or network
+connection.  SD cards come in a variety of sizes, ranging from a fraction of
+a gigabyte to upwards of 256 gigabytes or more.   Sailfish supports SDSC
+(standard capacity), SDHC (high capacity), and SDXC (extended capacity) SD
+cards.  The term ``SD'' is an acronym for ``Secure Digital''.},
+        plural={SD cards},
+        sort=SD card
+}
+
+\newglossaryentry{toolhead offset}
+{
+        name={Toolhead offset},
+        text={toolhead offset},
+        description={The ``toolhead offset'' is the physical spacing between
+two extruder nozzles.  See Section~\ref{sec:toolheadoffsets} for further
+information.},
+        plural={toolhead offsets},
+        sort=toolhead offset
+}
+
+\newglossaryentry{Volumetric 5D gcode}
+{
+        name={Volumetric 5D gcode},
+        description={The use of DC motors and RPM gcode was replaced
+by discrete stepper motors and ``Volumetric 5D'' gcode.  Volumetric gcode
+sought to specify the volume of plastic to be extruded rather than the
+``flowrate'' of plastic as controlled by a DC motor's rotational speed.
+Moreover, the new motion commands used five parameters: four spatial
+parameters X, Y, Z, and E (extruder), and a fifth speed parameter, feedrate.
+The use of five parameters led to the name ``5D''.  The combination of
+these two changes led to the name ``Volumetric 5D''.},
+        sort=Volumetric 5D gcode
+}
+
+\newglossaryentry{X3G}
+{
+        name={X3G},
+        description={X3G is an extended form of \gls{S3G} containing accelerated
+motion commands. Files containing X3G use the file extension \texttt{.x3g}.
+See Section~\ref{sec:s3g-x3g} for further information.},
+        plural={\texttt{.x3g}},
+        sort=X3G
+}
+
+\newglossaryentry{firmware}
+{
+        name={Firmware},
+        text={firmware},
+        description={Firmware is the software that is embedded in hardware
+and used to control the operation of the hardware.},
+        sort=firmware
+}
+
+\newglossaryentry{gcode}
+{
+        name={Gcode},
+        text={gcode},
+        description={Gcode, sometimes written as ``G-code'', is a numerical control programming language used
+to control the operation of machine tools such as 3D printers.  While there is an international standard
+for gcode, the 3D printing community loosely adheres to it.  For example,
+different 3D printers accept different variations of gcode.  MakerBot
+printers do not even directly accept gcode and instead consume a binary
+language known as S3G.  The specific gcodes produced by different
+slicers and accepted by different printers are often not well specified.},
+        sort=gcode
+}
+
+\newglossaryentry{mcode}
+{
+        name={Mcode},
+        text={mcode},
+        description={Gcode can contain ``miscellaneous'' function codes
+known as ``mcodes'' and which begin with the letter ``M''.  See \gls{gcode}
+for information on gcode.},
+        sort=mcode
+}
+
+\newglossaryentry{onboard parameters}
+{
+        name={Onboard parameters},
+        text={Onboard Parameters},
+        description={Many 3D printers store within their microprocessor
+configuration parameters which may be read and changed by users.  As these
+parameters live within the printer, they are referred to as ``onboard
+parameters''.  They are typically stored in the printer's EEPROM.},
+        sort=onboard parameters
+}
+
+\newglossaryentry{slicer}
+{
+        name={Slicer},
+        text={slicer},
+        description={The process of turning a 3D model into printing
+instructions --- gcode --- is referred to as ``slicing''.  That name
+derives from the fact that the process takes slices of the model
+and determines the necessary ``tool paths'' (extruder paths) to print
+that slice.  The slice is a ``layer'' of the print.  As the process
+is referred to as slicing, the software which implements the process
+is often called a ``slicer''.},
+        sort={slicer},
+        plural=slicers
+}
+
+\newglossaryentry{tool}
+{
+        name={Tool},
+        text={tool},
+        description={In gcode parlance, an extruder is a ``tool''
+which is controlled by the printer.  That is, a ``tool'' is another name for
+an extruder.  If your printer has a single extruder, than that extruder
+may be referred to as ``tool 0''.  If your printer has two extruders,
+then the right extruder is ``tool 0'' and the left extruder is ``tool 1''.
+To further confuse matters, in gcode motion commands for the right
+extruder may use the prefix ``A'' while the left extruder the prefix ``B''.},
+        sort=tool
+}
+
+\newglossaryentry{corner ringing}
+{
+        name={Corner ringing},
+        text={corner ringing},
+        description={This is a type of print defect characterized by a ripple pattern which
+quickly dampens and is seen on the vertical faces of prints, particularly
+after a direction change in the surface.},
+        sort=corner ringing
+}
+
+\newglossaryentry{telegraphing}
+{
+        name={Telegraphing},
+        text={telegraphing},
+        description={A print defect caused by too thin of an exterior
+shell through which interior printing penetrates leaving visible surface
+blemishes.},
+        sort=telegraphing
+}
+
+\newglossaryentry{over-extrusion}
+{
+        name={Over-extrusion},
+        text={over-extrusion},
+        description={When the extruder outputs a surplus of plastic,
+over-extrusion results.  Over and under-extrusion are caused by a mismatch
+between the slicer's expectations and reality: the slicer expects that when
+a millimeter of raw filament is fed into the extruder, a specific volume
+$V_e$ of plastic will then be extruded --- output by the extruder.  When
+the actual volume of plastic output, $V_a$, exceeds $V_e$, over-extrusion
+results; when $V_a$ is less than $V_e$, under-extrusion results.  There are
+a number of causes of this mismatch, but it generally is the result of the
+input filament diameter not matching what the slicer expected, or the
+steps per mm for the extruder being incorrect.  By first calibrating your
+slicing profile as per Section~\ref{sec:cube} for each type of plastic, and
+then always measuring your filament diameter, you can prevent over and
+under-extrusion from occurring.},
+       sort=over-extrusion
+}
+
+\newglossaryentry{under-extrusion}
+{
+        name={Under-extrusion},
+        text={under-extrusion},
+        description={When the extruder outputs a deficit of plastic,
+under-extrusion results. See \gls{over-extrusion}.},
+       sort=under-extrusion
+}
+
+\newglossaryentry{slicing profile}
+{
+        name={Slicing profile},
+        text={slicing profile},
+        description={Most slicers have a mechanism whereby you collect
+together a number of configuration settings used by that slicer when
+preparing a model for printing.  Such a collection of settings is here
+referred to as a ``slicing profile''.  A given slicer may use a different
+name (e.g., a ``factory'' in Simplify3D).},
+        plural={slicing profiles},
+        sort=slicing profile
+}
+
+\newglossaryentry{dualstrusion}
+{
+        name={Dualstrusion},
+        text={dualstrusion},
+        description={Making a 3D print using two extruders --- dual extrusion
+--- is sometimes referred to ``dualstrusion''.  The term was coined by
+MakerBot when they first began experimenting with dual extrusion for
+their Thing-o-Matic printer.},
+      sort=dualstrusion
+}
+
+\newglossaryentry{raft}
+{
+        name={Raft},
+        text={raft},
+        description={To promote better build plate adhesion or to accommodate an uneven build surface, most slicers can add to your print a thick series of layers which can later be removed once the print is finished.  These layers --- referred to as a raft --- are printed slowly so as to promote better adhesion to the build plate as well as to level out the printing surface.},
+        sort=raft
+}
+
+\newglossaryentry{deprime}
+{
+        name={Deprime},
+        text={deprime},
+        description={An extruder is ``primed'' by feeding filament into the extruder.  Conversely, it is ``deprimed'' by pulling or retracting the filament from the extruder.  Depriming an extruder serves to reduce the pressure within the extruder.  This in turn helps reduce the amount of unwanted plastic which oozes out of the extruder, particularly when no extrusion is desired such as during a printing pause or a ``travel move''.},
+        sort=deprime
+}
+
+\newglossaryentry{travel move}
+{
+        name={Travel move},
+        text={travel move},
+        description={When printing, there are two types of motions or moves: an extrusion move in which extrusion of plastic occurs, and a travel move in which motion occurs absent extrusion.  Travel moves serve to transfer the extruder to another portion of the print, without printing any plastic.},
+        sort = {travel move}
+}
+
+\newglossaryentry{GPX}
+{
+        name={GPX},
+        description={GPX is software used to convert gcode to S3G/X3G for use with a
+MakerBot style printer.  GPX may be found at Thingiverse as \myhref{http://www.thingiverse.com/thing:81425}{Thing \#81425}.},
+        sort=GPX
+}
+
+\newglossaryentry{shell}
+{
+        name={Shell},
+        text={shell},
+        description={When a model is prepared for printing by a slicer, the slicer generates commands to print a solid exterior.  The exterior is typically printed by following the model's perimeter.  The perimeter may be printed multiple times per layer, each time inset from the prior pass.  The final result can be thought of as a series of nested shells, one inside the other, from which arises the term ``shell''.  With some slicers, you control the thickness of the solid exterior by specifying the number of shells to generate.},
+        sort=shell
+}
+
+\newglossaryentry{infill}
+{
+        name={Infill},
+        text={infill},
+        description={Each model to be printed is comprised of an exterior and an interior.  While the exterior is typically printed solid with no holes or gaps, the interior may range anywhere from completely empty to completely solid. The plastic printed in the interior is known as ``infill'' and its solidity is the ``infill percentage''.  For example, 0\% infill means the print is completely hollow and 100\% infill means it is fully solid.  Printing time is reduced and plastic is saved by printing with infill percentages significantly less than 100\%.  The amount of infill you should use depends upon the nature of the piece being printed and its intended usage.},
+        sort=infill
+}
+
+\newglossaryentry{heatsink cooling fan}
+{
+        name={Heatsink cooling fan},
+        text={heatsink cooling fan},
+        description={Many MakerBot-style 3D printers include, for each extruder, a heatsink which helps cool portions of the extruder.  This heatsink often includes a fan mounted to the heatsink and which helps move air past the heatsink's cooling fins.},
+        sort={heatsink cooling fan},
+        plural={heatsink cooling fans}
+}
+
+\newglossaryentry{print cooling fan}
+{
+        name={Print cooling fan},
+        text={print cooling fan},
+        description={Some plastics such as PLA take longer to cool after extrusion.  This can be significant when printing small models for which there is insufficient time for a layer to cool before the next layer is printed.  Additional air flow directed at the print can speed up cooling.  For this reason, some printers are equipped with a ``print cooling fan''.},
+        sort={print cooling fan},
+        plural={print cooling fans}
+}

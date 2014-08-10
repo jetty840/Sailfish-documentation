@@ -1,0 +1,145 @@
+\documentclass[12pt,oneside]{book}
+\usepackage{graphicx}
+\usepackage{makeidx}
+\usepackage{tocloft}
+\usepackage{relsize}
+\usepackage{amsmath}
+\usepackage{multicol}
+\usepackage{colortbl}
+\usepackage{ifpdf}
+\usepackage{textcomp}
+
+\ifpdf
+  \ifdefined\htmlflag
+    \newcommand\myhref[2]{#2}
+  \else
+    \usepackage[colorlinks=true,linkcolor=blue,urlcolor=red]{hyperref}
+    \newcommand\myhref[2]{\href{#1}{#2}}
+  \fi
+  \usepackage[toc,nopostdot,nonumberlist]{glossaries}
+  \usepackage{ifthen}
+  \graphicspath{ {../images/pdf/} }
+  \usepackage[svgnames,table]{xcolor}
+  \usepackage[tikz]{bclogo}
+  \usepackage{hhline}
+\else
+  \usepackage[nopostdot,nonumberlist]{glossaries} %% with [toc] was appearing twice in TOC
+  \usepackage[table]{xcolor}
+  \usepackage{tex4ht}
+  \newcommand\myhref[2]{\Link[#1 ID="1"]{}{}#2\EndLink}
+  \graphicspath{ {../images/html/} }
+  \renewcommand*{\glsgroupskip}{}% 
+  \usepackage{wrapfig}
+  \newenvironment{bclogo}[1][]{\medbreak\noindent\hangindent=2pc\hangafter=-2%
+\ignorespaces%
+\begin{wrapfigure}{l}{0.5\textwidth}\includegraphics[]{warning}}%
+{\end{wrapfigure}%
+\medbreak\par\addvspace{\baselineskip}\bigskip\rule{1ex}{1ex}}
+\fi
+
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage[parfill]{parskip}
+\usepackage{wrapfig}
+\usepackage{booktabs}
+
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{2}
+
+\include{sfdoc-macros}
+
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}} % for chapters
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}} % for sections
+
+\setlength{\parindent}{1.5em}
+
+\makeindex
+
+\makeglossaries
+
+\def\secondpage{\clearpage\null\vfill
+\thispagestyle{empty}
+\begin{minipage}[b]{0.9\textwidth}
+\ifpdf
+  \footnotesize
+\fi
+\raggedright
+Copyright \copyright\ 2014, Laurel Newman.
+\newline
+This work is licensed under the Creative Commons Attribution-ShareAlike 4.0
+International License,
+\myhref{http://creativecommons.org/licenses/by-sa/4.0/}{http://creativecommons.org/licenses/by-sa/4.0/}.\\
+MakerBot and The Replicator are trademarks of MakerBot Industries, LLC.\\
+Simplify3D is a trademark of Simplify3D LLC.\\
+Kapton is a trademark of E.\,I. du Pont de Nemours and Company.
+\end{minipage}
+\vspace*{2\baselineskip}
+\cleardoublepage}
+
+\makeatletter
+\g@addto@macro{\titleTH}{\secondpage}
+\makeatother
+
+\title{DRAFT: Sailfish Reference Manual}
+\author{Laurel Newman}
+
+\begin{document}
+
+\titleTH
+
+\frontmatter
+
+\NextFile{toc.html}
+
+\tableofcontents
+
+%\listoftables
+
+\relsize{+1}
+
+\include{glossary}
+
+{
+\relsize{-1}
+\include{chapter-acknowledgments}
+}
+
+\mainmatter
+
+\include{chapter-introduction}
+
+\include{chapter-basic-usage}
+
+\include{chapter-lcd}
+
+\include{chapter-parameters}
+
+\include{chapter-tuning}
+
+\include{chapter-install}
+
+\include{chapter-update}
+
+\include{chapter-troubleshooting}
+
+\include{chapter-technicalities}
+
+\phantomsection
+\clearpage
+
+\ifpdf
+  \setglossarystyle{altlist}
+\fi
+\NextFile{glossary.html}
+\printglossaries
+
+\phantomsection
+\clearpage
+\ifpdf %% For HTML, Index is appearing twice in TOC
+  \addcontentsline{toc}{chapter}{\indexname}
+\fi
+
+\NextFile{indices.html}
+\printindex
+
+\end{document}

@@ -1,0 +1,41 @@
+\NextFile{introduction.html}
+\chapter{Introduction}
+
+Sailfish began as enhanced control software for MakerBot printers,
+incorporating new features intended for advanced users.  With its numerous
+features, Sailfish has evolved into the firmware of choice for users of MakerBot-style printers based upon the Replicator 1 and 2 series
+of 3D printers as well as the earlier Thing-o-Matic and Cupcake lines.
+
+A 3D printer's firmware is the software which resides within the
+printer and controls the printer's behavior. It is the software which
+receives printing instructions from MakerWare, ReplicatorG, SD card
+files, and other desktop programs and then executes them to create
+your 3D print.
+
+This documentation is intended to help you navigate the firmware on your printer, from basic setup and navigation of the \gls{LCD} screen, to advanced adjustments, updates, and the particulars of diagnosing Sailfish-specific issues.  The most recent documentation of Sailfish may be found online at:
+\begin{quote}
+\myhref{http://jettyfirmware.yolasite.com}{http://jettyfirmware.yolasite.com}
+\end{quote}
+
+\begin{bclogo}[logo=\bcinfo, noborder=true, couleurBarre=yellow]{Note}
+Consult the documentation supplied with your printer for general printing instructions.  The \emph{Sailfish Reference Manual} only provides detailed information on the use of the Sailfish \gls{firmware} and is not intended to replace your printer's documentation.  
+\end{bclogo}
+
+Suggested starting points in the documentation are:
+\begin{itemize}
+\item Chapter~\ref{chap:basic_usage}, Basic Usage: introductory information for new 3D printer operators.
+\item Chapter~\ref{chap:whatever}, Front Panel Operation: users who are familiar with 3D printers, but new to Sailfish, can begin here.
+\item Chapter~\ref{chap:install}, Installing Sailfish: if you are seeking information on installing Sailfish, start here.
+\end{itemize}
+
+The Sailfish firmware is open source and builds upon earlier firmwares such as Gen~4, Grbl, and Marlin.  MakerBot's own firmware for Replicators incorporates the core of Sailfish.  Source code for Sailfish is available for inspection and download at\index{Source code}
+
+\begin{description}
+\item[] \textbf{Replicators}\
+\newline
+\myhref{https://github.com/jetty840/Sailfish-MightyBoardFirmware}{https://github.com/jetty840/Sailfish-MightyBoardFirmware}
+\item[] \textbf{Thing-o-Matics, Cupcakes}\newline
+\myhref{https://github.com/jetty840/Sailfish-G3Firmware}{https://github.com/jetty840/Sailfish-G3Firmware}
+\end{description}
+
+\noindent Important information about the compiler and tools required if you wish to build Sailfish yourself is located in the respective \texttt{doc/} directories in the \texttt{avr-gcc.markdown} file.
