@@ -13,7 +13,7 @@ Sailfish stores numerous firmware settings within your printer's EEPROM.  All of
 Table~\ref{tab:def-params} lists the bulk of the firmware parameters, their default values, and the sections of this manual where information on them may be found.
 
 {\def\NB{\textsuperscript{*}}
-\begin{table}[!hb]
+{\begin{table}[!hb]
 \centering
 \begin{tabular}{l | c | c c c }
 \hline
@@ -74,7 +74,7 @@ Replicator 2X& 152 \hphantom{mm} & 75 \hphantom{mm} & 0 \hphantom{mm} & 35 \hpha
 \end{tabular}
 \caption[Default home and toolhead offsets]{Default home and toolhead offsets}
 \label{tab:default-offsets}
-\end{table}
+\end{table}}
 
 \NextFile{parameters-home-offsets.html}
 
@@ -164,7 +164,7 @@ The maximum speed changes regulate the maximum instantaneous changes in speed th
 \section{Auto-leveling} \label{sec:alevel-params}
 \index{Parameters!Auto-leveling|(}
 
-Some printers incorporate Z-probe mechanisms to measure the build plate position and automatically compensate the print level.  This is referred to as auto-leveling; support for it was introduced in Sailfish~7.7 and 4.7.  This support includes two firmware parameters.  The first, ``auto-level variance'' (Section~\ref{sec:alevel-variance}) specifies just how out-of-level your build plate can be and still use auto-leveling.  If the difference in Z height between any two of the three probe points exceeds the variance parameter, then the print is cancelled and you are asked to manually relevel the build plate.\footnote{While the firmware could accommodate a very out-of-level build plate, there is little practical purpose to this.  Sailfish imposes a variance limit as this allows the use of an optimized algorithm for improved print speed.  While some firmwares do allow unlimited variance, this creates significant performance degradation regardless of how level the plate actually is.}  By default, this parameter is set to 0.5~mm.  Its permitted range is anywhere from 0.01~mm to 0.99~mm.  Note, however, that higher values may result in noticeable skew for taller prints if the build plate is uneven.
+Some printers incorporate Z-probe mechanisms to measure the build plate position and automatically compensate the print level.  This is referred to as auto-leveling; support for it was introduced in Sailfish~7.7 and 4.7.  This support includes two firmware parameters.  The first, ``auto-level variance'' (Section \ref{sec:alevel-variance}) specifies just how out-of-level your build plate can be and still use auto-leveling.  If the difference in Z height between any two of the three probe points exceeds the variance parameter, then the print is cancelled and you are asked to manually relevel the build plate.\footnote{While the firmware could accommodate a very out-of-level build plate, there is little practical purpose to this.  Sailfish imposes a variance limit as this allows the use of an optimized algorithm for improved print speed.  While some firmwares do allow unlimited variance, this creates significant performance degradation regardless of how level the plate actually is.}  By default, this parameter is set to 0.5~mm.  Its permitted range is anywhere from 0.01~mm to 0.99~mm.  Note, however, that higher values may result in noticeable skew for taller prints if the build plate is uneven.
 
 The second auto-leveling related parameter is the maximum number of probe hits which will be tolerated before the printer pauses and requests manual intervention (Section~\ref{sec:alevel-maxhits}). Set this parameter to the value 0 to ignore all probe hits once the print begins.  Otherwise, it may be set to any value in the range 1 -- 200.  The default value is 20, meaning that, on probe hit number 21, the printer pauses.  The count of hits is reset back to 0 after resuming the print.
 \index{Parameters!Auto-leveling|)}
