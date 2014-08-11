@@ -1,4 +1,8 @@
-\documentclass[12pt,oneside]{book}
+\ifdefined\luluflag
+  \documentclass[12pt,twoside]{book}
+\else
+  \documentclass[12pt,oneside]{book}
+\fi
 \usepackage{graphicx}
 \usepackage{makeidx}
 \usepackage{tocloft}
@@ -10,10 +14,34 @@
 \usepackage{textcomp}
 
 \ifpdf
+  \ifdefined\luluflag
+    \usepackage{fancyhdr}
+    \pagestyle{fancy}
+    \fancyhead{}
+    \fancyhead[LE]{\slshape \leftmark}
+    \fancyhead[RO]{\slshape \rightmark}
+    \pdfpageattr{
+    /MediaBox [0 0 621.00000 801.00000]
+    /TrimBox [0.00000 9.00000 612.00000 792.00000]}
+    \pdfminorversion=3
+    \pdfcatalog{
+    /OutputIntents [ <<
+    /Info (none)
+    /Type /OutputIntent
+    /S /GTS_PDFX
+    /OutputConditionIdentifier (lulu.com)
+    /RegistryName (http://www.color.org/)
+    >> ]
+    }
+  \fi
   \ifdefined\htmlflag
     \newcommand\myhref[2]{#2}
   \else
-    \usepackage[colorlinks=true,linkcolor=blue,urlcolor=red]{hyperref}
+    \ifdefined\luluflag
+      \usepackage[colorlinks=false]{hyperref}
+    \else
+      \usepackage[colorlinks=true,linkcolor=blue,urlcolor=red]{hyperref}
+    \fi
     \newcommand\myhref[2]{\href{#1}{#2}}
   \fi
   \usepackage[toc,nopostdot,nonumberlist]{glossaries}
@@ -93,14 +121,18 @@ Kapton is a trademark of E.\,I. du Pont de Nemours and Company.
 
 \tableofcontents
 
-%\listoftables
-
-\relsize{+1}
+\ifdefined\luluflag
+\else
+  \relsize{+1}
+\fi
 
 \include{glossary}
 
 {
-\relsize{-1}
+\ifdefined\luluflag
+\else
+  \relsize{-1}
+\fi
 \include{chapter-acknowledgments}
 }
 

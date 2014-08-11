@@ -25,6 +25,27 @@ pdf: $(SRCTEX)
 		sailfish.4tc sailfish.dvi sailfish.idv sailfish.lg \
 		sailfish.tmp sailfish.xref texput.log
 
+lulu: $(SRCTEX)
+	mkdir -p $(OUTDIR)
+	# Perform pdflatex builds with hyperref package for PDF linking
+	pdflatex --file-line-error --synctex=1 '\def\luluflag{}\input{sailfish}'
+	makeindex -s sailfish.ist -t sailfish.alg -o sailfish.acr sailfish.glo
+	makeindex -s sailfish.ist -t sailfish.glg -o sailfish.gls sailfish.glo
+	makeindex sailfish
+	pdflatex --file-line-error --synctex=1 '\def\luluflag{}\input{sailfish}'
+	makeindex -s sailfish.ist -t sailfish.alg -o sailfish.acr sailfish.glo
+	makeindex -s sailfish.ist -t sailfish.glg -o sailfish.gls sailfish.glo
+	makeindex sailfish
+	pdflatex --file-line-error --synctex=1 '\def\luluflag{}\input{sailfish}'
+	mv sailfish.pdf $(OUTDIR)/sailfish-lulu.pdf
+	rm -f *.aux sailfish.acr sailfish.alg sailfish.glg sailfish.glo \
+		sailfish.gls sailfish.glsdefs sailfish.idx sailfish.ilg \
+		sailfish.ind sailfish.ist sailfish.log sailfish.out \
+		sailfish.synctex.gz sailfish.toc
+	rm -f idxmake.dvi idxmake.log sailfish.4ct sailfish.4dx sailfish.4ix \
+		sailfish.4tc sailfish.dvi sailfish.idv sailfish.lg \
+		sailfish.tmp sailfish.xref texput.log
+
 html: $(SRCTEX)
 	mkdir -p $(OUTDIR)
 	# Perform pdflatex builds without hyperref package for htlatex

@@ -9,11 +9,14 @@ user interface, the printer can be operated without the use of a computer.
 This chapter describes the operation of Replicator-style printers through this
 built-in interface.
 
+\ifdefined\luluflag
+\else
 For users of Thing-o-Matics with ``Gen 4 LCD interfaces'', please refer
 to the ``Pages Archive'' of the MakerBot Wiki found at
 \myhref{http://www.makerbot.com/support/archive/}{http://www.makerbot.com/support/archive/}.  There, documentation for the Thing-o-Matic
 LCD interface may be found as part of the ``\gls{Jetty Firmware}''
 documentation.
+\fi
 
 \NextFile{ui-splash.html}
 
@@ -113,7 +116,10 @@ This menu allows you to print items you have already saved on an \gls{SD card} (
 \end{figure}
 
 \ifpdf
+\ifdefined\luluflag
+\else
 \pagebreak[4]
+\fi
 \fi
 
 If instead, you see the error message ``SD card not present'' then you need to insert an SD card into your printer.\index{Errors!SD card not present}

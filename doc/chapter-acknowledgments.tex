@@ -1,3 +1,7 @@
+\ifdefined\luluflag
+\fancyhead{}
+\fi
+
 \NextFile{acknowledgements.html}
 
 \chapter{Acknowledgments}
@@ -13,7 +17,8 @@ Portions of this documentation were adapted from earlier works by Jetty and Dan 
 \item[] \textbf{Magicfirm Europe AB}, Makers of the ZYYX 3D Printer,
 \ifpdf\newline\fi
 \myhref{http://zyyx3dprinter.com/}{http://zyyx3dprinter.com/}
-\item[] \textbf{RAFFLE} (Carl Raffle), Maker of 3D printers, components and upgrade parts, \myhref{http://shop.raffle.ch/}{http://shop.raffle.ch/}
+\item[] \textbf{RAFFLE} (Carl Raffle), Maker of 3D printers, components and upgrade parts,
+\myhref{http://shop.raffle.ch/}{http://shop.raffle.ch/}
 \end{description}
 
 \noindent Individuals:
@@ -55,3 +60,10 @@ Portions of this documentation were adapted from earlier works by Jetty and Dan 
 \end{multicols}
 \fi
 }
+
+\clearpage
+
+\ifdefined\luluflag
+\fancyhead[LE]{\slshape \leftmark}
+\fancyhead[RO]{\slshape \rightmark}
+\fi
