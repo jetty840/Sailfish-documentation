@@ -18,8 +18,10 @@
     \usepackage{fancyhdr}
     \pagestyle{fancy}
     \fancyhead{}
-    \fancyhead[LE]{\slshape \leftmark}
-    \fancyhead[RO]{\slshape \rightmark}
+    \fancyhead[LE]{\slshape \nouppercase \leftmark}
+    \fancyhead[RO]{\slshape \nouppercase \rightmark}
+    \addtolength{\evensidemargin}{-8mm}
+    \addtolength{\oddsidemargin}{8mm}
     \pdfpageattr{
     /MediaBox [0 0 621.00000 801.00000]
     /TrimBox [0.00000 9.00000 612.00000 792.00000]}

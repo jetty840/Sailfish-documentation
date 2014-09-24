@@ -1,5 +1,11 @@
 \ifdefined\luluflag
 \fancyhead{}
+\renewcommand{\chaptermark}[1]{%
+  \ifnum\value{chapter}>0
+    \markboth{Chapter \thechapter{}: #1}{}%
+  \else
+    \markboth{#1}{}%
+  \fi}
 \fi
 
 \NextFile{acknowledgements.html}
@@ -64,6 +70,6 @@ Portions of this documentation were adapted from earlier works by Jetty and Dan 
 \clearpage
 
 \ifdefined\luluflag
-\fancyhead[LE]{\slshape \leftmark}
-\fancyhead[RO]{\slshape \rightmark}
+\fancyhead[LE]{\slshape \nouppercase \leftmark}
+\fancyhead[RO]{\slshape \nouppercase \rightmark}
 \fi
