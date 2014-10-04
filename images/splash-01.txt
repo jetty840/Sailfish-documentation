@@ -1,4 +1,4 @@
 Sailfish Replicator2
---------------------
-Thing 32084 14/06/23  
-Sailfish v7.7 r1347
+--- Thing 32084 ----
+ATmega 1280 14/10/04  
+Sailfish v7.7 r1429

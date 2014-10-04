@@ -1,4 +1,4 @@
   Sailfish Rep 2X
 Free SRAM        871
-Thing 32084 14/06/22
-Sailfish v7.7 r1371
+ATmega 1280 14/10/04
+Sailfish v7.7 r1429
