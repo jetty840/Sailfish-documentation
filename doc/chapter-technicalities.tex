@@ -225,11 +225,11 @@ difficulties.  However, auto-leveling cannot correct for a seriously warped
 build plate.
 
 The careful reader will realize that there are an infinite number of
-planes parallel to the build plate.  By knowing the vertical distance between
-the tip of leveling probe and the tip of the extruder nozzle, the firmware
+planes parallel to the build plate.  By knowing the fixed Z position of the extruder
+nozzle when the Z probe is triggered, the firmware
 knows the exact plane to use for each print layer and can even adjust
 the initial printing gap between the build plate and extruder nozzle.
-This vertical distance between the probe and nozzle tip is a printer calibration
+This piece of positioning information is a printer calibration
 which can be done once at the factory for you and saved in the printer's
 memory.  With Sailfish, it is saved as the Z home offset.  Like the traditional
 use of the Z home offset, you can adjust it to fine tune the initial
@@ -238,24 +238,21 @@ decrease the size of the gap; decrease the value to increase the gap.  However,
 the Z home offset no longer has 0~mm as its typical value.  Its typical value
 is now a design parameter of your printer.  Consult your printer's
 documentation for information on the typical value and how to recalibrate it
-should you need to.
-
-Because of this usage of the Z home offset for auto-leveling, you should
-always use auto-leveling with your prints.   And indeed, you will always
-want to: it is fast, easy, greatly improves your printing experience,
-and will save you the effort of learning manual leveling.
-Use it for every print!
-
-If, for some reason, you need to occasionally print without the use of
-auto-leveling, then you will need to consider your slicing profiles and
-whether they include commands to recall the Z home offset (M132~Z).  If they
-do, then give thought to either removing the Z axis from those commands or
-saving your current settings in a Sailfish profile (Section~\ref{sec:profiles})
-for later recall and then setting the Z home offset to 0~mm for use with
-non-auto-leveling slicing profiles.
+should you need to.\footnote{For a ZYYX printer whose probe is triggered by
+contact with the build plate at Z=0~mm, this fixed position is the distance between
+the extruder nozzle and probe tip expressed as a negative value.  That is,
+if the distance between the probe tip and extruder nozzle is 1.0~mm, then
+when the probe contacts the build plate at Z=0~mm, the extruder nozzle is
+below the build plate at Z=-1.0~mm.  Thus, the Z home offset is set to -1.0~mm.
+If you instead use a build plate with raised sections 3.0~mm in height
+that the probe contacts, and the extruder is 1.0~mm below the probe tip,
+then the Z home offset would be set to 2.0~mm: when the probe tip
+contacts the raised section at Z=3.0~mm, the extruder is 1.0~mm lower
+and thus at Z=2.0~mm.}
 
 The process of auto-leveling begins with your slicing profile's
-initial print commands.  These commands will probe the height of three
+initial print commands.  These commands, described in
+Section~\ref{sec:special-gcode}, will probe the height of three
 locations over your build plate and then tell the printer to activate
 auto-leveling.  Once the print is finished, auto-leveling is turned
 off: it does not remain on for subsequent prints, even if you use the
@@ -264,6 +261,14 @@ which will use auto-leveling must have the necessary commands at the
 start of the print.  Inclusion of these commands is done automatically
 for you by your slicing profile.  Note that auto-leveling may be used
 when printing over USB or from an SD card.
+
+To ``disable'' auto-leveling, simply remove the auto-leveling gcode commands
+from your print file. But when you print without auto-leveling, you need to consider
+your slicing profiles and whether they include commands to recall the Z home
+offset (M132~Z).  If they do, then give thought to either removing the Z axis from
+those commands or saving your current settings in a Sailfish profile (Section~\ref{sec:profiles})
+for later recall and then setting the Z home offset to 0~mm for use with
+non-auto-leveling slicing profiles.
 \index{Auto-leveling|)}
 
 \NextFile{details-custom-printer.html}
