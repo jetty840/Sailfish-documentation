@@ -1,0 +1,4 @@
+Tool 0 temp sensor
+0. K Thermocouple
+
+Up/Dn/Left/M to set

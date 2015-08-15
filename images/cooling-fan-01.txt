@@ -1,0 +1,4 @@
+Cooling Fan Power
+100%
+
+Up/Dn/Left/M to set
