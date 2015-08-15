@@ -1,4 +1,4 @@
 Z Offset:
 0.000mm
 
-Up/Dn/Left/M to Set
+Up/Dn/Left/M to set

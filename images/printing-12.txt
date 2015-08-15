@@ -1,4 +1,4 @@
 Change Speed
 x1.00
 
-Up/Dn/Left/M to Set
+Up/Dn/Left/M to set

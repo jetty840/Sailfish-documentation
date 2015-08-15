@@ -1,4 +1,4 @@
 ~Check SD Reads   NO
  P-Stop Control  OFF
-
-
+ P-Stop Inverted  NO
+ LED Colour    WHITE

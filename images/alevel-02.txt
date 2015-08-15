@@ -1,4 +1,4 @@
 Max Z Probe Hits
 Use 0 for unlimited
 020
-Up/Dn/Left/M to Set
+Up/Dn/Left/M to set

@@ -1,4 +1,4 @@
  Max height variance
  between probe pts.
  0.50 mm
- Up/Dn/Left/M to Set
+ Up/Dn/Left/M to set

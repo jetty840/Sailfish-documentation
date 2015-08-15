@@ -1,4 +1,4 @@
 Profile Name:
 ABS
 ^
-Up/Dn/R/L/M to Set
+Up/Dn/R/L/M to set
