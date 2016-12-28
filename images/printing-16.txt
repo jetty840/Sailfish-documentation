@@ -1,1 +1,3 @@
-^Cold Pause
+^Set Lights OFF
+ Print Statistics
+ Cold Pause

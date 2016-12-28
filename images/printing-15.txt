@@ -1,4 +1,4 @@
  Change Speed
  Change Temperature
+ Change HBP Temp
 ~Set Cooling Fan ON
- Print Statistics
